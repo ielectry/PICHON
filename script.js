@@ -29,8 +29,8 @@ const buttons = {
 
 // Mapeo CC (El motor envía el número de control en la propiedad 'channel')
 const CC_TO_CONTROL = {
-  2: { type: 'fader', ch: 2 },
-  3: { type: 'fader', ch: 3 },
+  1: { type: 'fader', ch: 2 },
+  2: { type: 'fader', ch: 3 },
 
   10: { type: 'button', ch: 2, name: 'hpf' },
   11: { type: 'button', ch: 2, name: 'bpf' },
@@ -140,5 +140,6 @@ function connectWebSocket() {
     setTimeout(connectWebSocket, 3000);
   };
 }
+
 
 window.addEventListener('load', connectWebSocket);
