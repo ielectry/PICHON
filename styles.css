@@ -1,4 +1,4 @@
-/* ESTA VERSION TIENE LOS FADERS EN NEGRO CON LOS BOTONES NORMALES  */
+/* high level performance  */
 /* --- 1. RESET / LAYOUT GLOBAL --- */
 
 html,
@@ -159,9 +159,9 @@ body {
   left: 50%;
   transform: translateX(-50%);
 
-  width: 86px;     /* más parecido al de la foto */
-  height: 30px;
-  border-radius: 8px;
+  width: 70px;     /* más parecido al de la foto */
+  height: 20px;
+  border-radius: 6px;
 
   background:
     /* brillo superior suave */
@@ -180,7 +180,7 @@ body {
   /* sombra exterior + biseles internos */
   box-shadow:
     /* sombra “proyectada” como la foto (abajo/derecha) */
-    12px 10px 0 rgba(0,0,0,.55),
+    6px 4px 0 rgba(0,0,0,.55),
     0 10px 18px rgba(0,0,0,.55),
 
     /* filo superior (bevel) */
@@ -202,7 +202,7 @@ body {
   position:absolute;
   left: 0;
   right: 0;
-  top: 12px;
+  top: 8px;
   height: 4px;
   border-radius: 999px;
 
