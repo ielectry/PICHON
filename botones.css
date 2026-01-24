@@ -1,0 +1,126 @@
+.btn-knob, .btn-knob-act{
+  width: 44px;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+/* ANILLO (borde exterior) */
+.btn-knob::before, .btn-knob-act::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  /* Estado normal: anillo blanco/gris con degradado */
+background: conic-gradient(from 210deg,
+    #ffffff 0deg,
+    #f7f7f7 40deg,
+    #e7e7e7 95deg,
+    #dcdcdc 160deg,
+    #f0f0f0 235deg,
+    #ffffff 320deg,
+    #ffffff 360deg
+  );
+
+  /* filo exterior */
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.25),
+    0 0 0 1px rgba(0,0,0,.10) inset;
+}
+
+/* CUERPO (círculo interior oscuro) */
+.btn-knob::after, .btn-knob-act::after{
+  content:"";
+  position:absolute;
+
+  /* esto define el grosor del anillo */
+  inset: 4px;
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(circle at 35% 30%,
+      rgba(255,255,255,.18) 0%,
+      rgba(255,255,255,.08) 18%,
+      rgba(255,255,255,0) 45%
+    ),
+    radial-gradient(circle at 50% 55%,
+      #2b2b2b 0%,
+      #1a1a1a 45%,
+      #0f0f0f 75%,
+      #080808 100%
+    );
+
+  box-shadow:
+    0 3px 6px rgba(0,0,0,.55) inset,
+    0 -2px 4px rgba(255,255,255,.06) inset;
+}
+
+/* ACTIVO: anillo naranja */
+.btn-knob.active::before{
+  background: conic-gradient(from 210deg,
+      #ffe08a 0deg,
+      #ffb21a 35deg,
+      #ff8f00 85deg,
+      #ff7a00 140deg,
+      #ff9a00 220deg,
+      #ffd06a 300deg,
+      #ffe08a 360deg
+    );
+
+  border-radius: inherit;
+  
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.25),
+    0 0 0 1px rgba(0,0,0,.12) inset;
+}
+
+
+/* ACTIVO: anillo verde */
+.btn-knob-act.active::before{
+  background: conic-gradient(from 210deg,
+      #7ff7ff 0deg,
+      #00f0ff 35deg,
+      #00cfff 85deg,
+      #1b79ff 150deg,
+      #0a46ff 210deg,
+      #00bfff 290deg,
+      #7ff7ff 360deg
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.10) inset,
+    0 0 10px rgba(0,240,255,.25),
+    0 2px 4px rgba(0,0,0,.25);
+}
+
+
+.btn-text, .btn-text-act {
+  opacity: 0;
+  z-index: 200;
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Geist Mono", monospace;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.btn-knob.active .btn-text{
+  opacity: 100%;
+  color: #ffd37a;
+}
+
+.btn-knob-act.active .btn-text{
+  opacity: 100%;
+  color: #2f74ff;
+}

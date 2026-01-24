@@ -9,6 +9,7 @@ body {
   width: 700px;
   max-height: 900px;
   box-sizing: border-box;
+  background: black;
 }
 
 *,
@@ -61,93 +62,30 @@ body {
   margin-top: 64px;
 }
 
-/* --- 2.1 Botones de filtro (HPF/BPF/LPF) --- */
+/* --- 2.1 Botones de filtro (HPF/BPF/LPF/ACT) --- */
 
 /* Estado base (apagado) */
 .button {
   position: relative;
-  border: none;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
   margin: 8px;
-  cursor: pointer;
-  background: #050505; /* aro exterior negro */
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  z-index: 0;
   font-size: 0.7em;
   font-weight: bold;
   letter-spacing: 0.12em;
-  color: #cccccc;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9);
-  transition: transform 0.12s ease, box-shadow 0.12s ease, color 0.12s ease;
-  z-index: 0;
-}
 
-/* Cara interior del botón (círculo gris) */
-.button::before {
-  content: "";
-  position: absolute;
-  inset: 4px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0) 40%),
-    linear-gradient(to bottom, #4b4b4b 0%, #111111 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.05),
-    inset 0 -3px 4px rgba(0, 0, 0, 0.8);
-  z-index: -1; /* va por detrás del texto */
+  border: 1px solid #181716;
+  background-color: #181716;
+  color: #D4FF00;
+  box-shadow: 4px 4px 0 #000, inset -2px -2px 2px rgba(212, 255, 0, 0.2);
+  transition: all 120ms linear;
 }
-
-/* Estado activo / iluminado */
-.button.active {
-  color: #1a1107;
-  text-shadow: 0 1px 1px rgba(255, 235, 200, 0.9);
-
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 10px rgba(255, 165, 0, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.9);
-}
-
-.button.active::before {
-  background:
-    radial-gradient(circle at 35% 22%, #ffe8bc 0%, #f8c57b 32%, #f29a42 60%, #c66623 85%, #8a3c14 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.45),
-    inset 0 -4px 6px rgba(140, 60, 20, 0.9);
-}
-
-
-/* --- 2.2 Botón ACT --- */
-
-/* Estado activo / ON */
-.button.act.active {
-  background-color: #050505;
-  color: #000;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
-  box-shadow:
-    0 0 12px rgba(0, 150, 255, 0.7),
-    0 3px 6px rgba(0, 0, 0, 0.9);
-  transform: translateY(-1px);
-}
-
-.button.act.active::before {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 28% 22%, #d0f0ff 0%, #7bc6ff 32%, #3a95e6 70%, #1f5eaa 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.45),
-    inset 0 -4px 6px rgba(0, 0, 0, 0.55);
-  z-index: -1;
-}
-
 
 /* --- 3. FADER / TRACK --- */
 
@@ -216,40 +154,65 @@ body {
 
 /* --- 4. FADER THUMB (deslizador) --- */
 
-.fader-thumb {
+.fader-thumb{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 48px;
-  height: 28px;
-  background: #2f2f2f;
-  border-radius: 6px;
 
+  width: 86px;     /* más parecido al de la foto */
+  height: 30px;
+  border-radius: 8px;
+
+  background:
+    /* brillo superior suave */
+    linear-gradient(to bottom,
+      rgba(255,255,255,.12) 0%,
+      rgba(255,255,255,.05) 22%,
+      rgba(0,0,0,0) 55%
+    ),
+    /* cuerpo plástico */
+    linear-gradient(to bottom,
+      #2a2a2a 0%,
+      #171717 45%,
+      #0f0f0f 100%
+    );
+
+  /* sombra exterior + biseles internos */
   box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.5),
-    inset 0 -2px 4px rgba(255, 255, 255, 0.1),
-    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+    /* sombra “proyectada” como la foto (abajo/derecha) */
+    12px 10px 0 rgba(0,0,0,.55),
+    0 10px 18px rgba(0,0,0,.55),
+
+    /* filo superior (bevel) */
+    inset 0 1px 0 rgba(255,255,255,.10),
+    /* oscurecido interior inferior */
+    inset 0 -10px 14px rgba(0,0,0,.55),
+    /* sombreado interior lateral para volumen */
+    inset 10px 0 14px rgba(0,0,0,.45),
+    inset -10px 0 10px rgba(255,255,255,.03);
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Líneas decorativas del thumb */
-.fader-thumb::before,
-.fader-thumb::after {
-  content: "";
-  position: absolute;
-  width: 70%;
-  height: 3px;
-  background: #e5d5a8; /* color crema */
-  border-radius: 3px;
+/* Franja brillante horizontal (la “línea” que se ve arriba) */
+.fader-thumb::before{
+  content:"";
+  position:absolute;
+  left: 0;
+  right: 0;
+  top: 12px;
+  height: 4px;
+  border-radius: 999px;
+
+  background-color: #ffffff;
+
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.35) inset,
+    0 -1px 0 rgba(255,255,255,.06) inset;
+
+  filter: blur(.2px);
 }
 
-.fader-thumb::before {
-  top: 8px;
-}
 
-.fader-thumb::after {
-  bottom: 8px;
-}

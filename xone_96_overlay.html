@@ -8,6 +8,8 @@
 
   <!-- Estilos externos -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="botones.css" />
+
 </head>
 
 <body>
@@ -53,25 +55,23 @@
         <div class="fader-thumb" id="fader-2" style="bottom:0px;"></div>
       </div>
         <div class="filters">
-
-          <div class="button filter active" id="hpf-2">HPF</div>
-          <div class="button filter" id="bpf-2">BPF</div>
-          <div class="button filter" id="lpf-2">LPF</div>
+          <div class="btn-knob" id="hpf-2"><span class="btn-text">HPF</span></div>
+          <div class="btn-knob" id="bpf-2"><span class="btn-text">BPF</span></div>
+          <div class="btn-knob active" id="lpf-2"><span class="btn-text">LPF</span></div>
             <div class="act-zone">
-              <div class="button act" id="act-2">ACT</div>
+              <div class="btn-knob-act" id="act-2"><span class="btn-text">ON</span></div>
             </div>
         </div>
-
     </div>
 
     <div class="channel" id="ch3">
       <div class="filters">
-        <div class="button filter" id="hpf-3">HPF</div>
-        <div class="button filter" id="bpf-3">BPF</div>
-        <div class="button filter" id="lpf-3">LPF</div>
-        <div class="act-zone">
-          <div class="button act" id="act-3">ACT</div>
-        </div>
+         <div class="btn-knob active" id="hpf-3"><span class="btn-text">HPF</span></div>
+          <div class="btn-knob" id="bpf-3"><span class="btn-text">BPF</span></div>
+          <div class="btn-knob active" id="lpf-3"><span class="btn-text">LPF</span></div>
+            <div class="act-zone">
+              <div class="btn-knob-act active" id="act-3"><span class="btn-text">ON</span></div>
+            </div>
       </div>
       <div class="fader-track" id="fader-track-3">
             <div class="scale">
