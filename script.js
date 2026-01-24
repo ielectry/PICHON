@@ -54,8 +54,9 @@ function setFader(ch, normalizedVal) {
   const thumb = faders[ch];
   if (!thumb) return;
 
-  const px = normalizedVal * 440;
-  thumb.style.bottom = `${px}px`;
+  // El motor envía 'val' ya normalizado (0.0 a 1.0)
+  const percentage = (normalizedVal * 100).toFixed(2);
+  thumb.style.bottom = `${percentage}%`;
 }
 
 function setFilterGroupState(ch, activeName, value) {
