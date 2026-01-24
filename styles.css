@@ -9,7 +9,6 @@ body {
   width: 700px;
   max-height: 900px;
   box-sizing: border-box;
-  background: black;
 }
 
 *,
@@ -214,5 +213,6 @@ body {
 
   filter: blur(.2px);
 }
+
 
 
